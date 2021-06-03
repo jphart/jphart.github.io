@@ -6,6 +6,21 @@ visible: true
 description: Using a Raspberry Pi and Arduino to track the weather
 ---
 
+
+<div class="post_series">
+<p>Posts in this series</p>
+<ul>
+    <li><b>Introduction</b></li>
+    <li><a href="sensor/">Sensor hardware</a></li>
+    <li>Powering the sensor</li>
+    <li>Final sensor hardware</li>
+    <li>Sensor software</li>
+    <li>Reciever hardware</li>
+    <li>Reciever software</li>
+    <li>Final build & installation</li>
+</ul>
+</div>
+
 Back in March 2020 with lockdown in the UK looming I thought it would be a good time to pick up some new hobbies. By day I’m a software developer working mainly on backend technologies on large servers, using VMs or containers. I’ve not touched electronics since my uni days, but was interested in getting back into some coding closer to the metal. 
 
 It seemed a good time to pick up a [Arduino starter kit](https://www.amazon.co.uk/Project-Starter-Tutorial-Prototype-Expansion/dp/B01D8KOZF4) & play around in the microcontroller world. A simple 8 bit chip with 2Kb RAM (Similar to a [NES](https://en.wikipedia.org/wiki/Nintendo_Entertainment_System#Technical_specifications)) is certainly quite a change from the day job!
@@ -46,10 +61,12 @@ With a rough plan in place, it was time to start prototyping.
 
 Having never made anything like this before I had to do a lot of research and experimentation before coming up with a final design, so I'll be splitting up the build into a few parts.
 
-* Sensor hardware
+* [Sensor hardware prototype](sensor/)
+* Powering the sensor
+* Final sensor hardware
 * Sensor software
 * Reciever hardware
 * Reciever software
 * Final build & installation
 
-Next time: building a prototype sensor, looking at radio transmitters and power problems.
+<a href="sensor/">Next time: building a prototype sensor</a>, looking at radio transmitters and sensor modules.

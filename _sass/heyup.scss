@@ -1,4 +1,13 @@
 
+.post-content h2{
+    font-size: 1.2em;
+}
+
+.post-content h3{
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
 
 .wrapper {
     margin-right: auto;
@@ -28,4 +37,20 @@ footer{
     width: -webkit-calc(60% - (30px / 2)); 
     width: calc(60% - (30px / 2)); 
     border-left: 1px dashed black;
+}
+
+.post_series {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    background-color: #eee;
+    float:right;
+    margin: 1em;
+}
+
+pre, code{
+    background-color: #ddd;
+}
+
+.highlighter-rouge .highlight{
+    background-color: #ddd;
 }
