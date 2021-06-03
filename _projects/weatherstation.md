@@ -11,7 +11,7 @@ description: Using a Raspberry Pi and Arduino to track the weather
 <p>Posts in this series</p>
 <ul>
     <li><b>Introduction</b></li>
-    <li><a href="sensor/">Sensor hardware</a></li>
+    <li><a href="sensor">Sensor hardware</a></li>
     <li>Powering the sensor</li>
     <li>Final sensor hardware</li>
     <li>Sensor software</li>
@@ -61,7 +61,7 @@ With a rough plan in place, it was time to start prototyping.
 
 Having never made anything like this before I had to do a lot of research and experimentation before coming up with a final design, so I'll be splitting up the build into a few parts.
 
-* [Sensor hardware prototype](sensor/)
+* [Sensor hardware prototype](sensor)
 * Powering the sensor
 * Final sensor hardware
 * Sensor software
@@ -69,4 +69,4 @@ Having never made anything like this before I had to do a lot of research and ex
 * Reciever software
 * Final build & installation
 
-<a href="sensor/">Next time: building a prototype sensor</a>, looking at radio transmitters and sensor modules.
+<a href="sensor">Next time: building a prototype sensor</a>, looking at radio transmitters and sensor modules.

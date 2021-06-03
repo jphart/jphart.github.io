@@ -9,7 +9,7 @@ description: Using a Raspberry Pi and Arduino to monitor the weather
 <div class="post_series">
 <p>Posts in this series</p>
 <ul>
-    <li><a href="../">Introduction</a></li>
+    <li><a href="/weatherstation">Introduction</a></li>
     <li><b>Sensor hardware prototype</b></li>
     <li>Powering the sensor</li>
     <li>Final sensor hardware</li>
@@ -20,7 +20,7 @@ description: Using a Raspberry Pi and Arduino to monitor the weather
 </ul>
 </div>
 
-At the end of the [last post](../) we had the outline of a remote weather sensor transmitting data back to a base station for recording and visualisation. 
+At the end of the [last post](/weatherstation) we had the outline of a remote weather sensor transmitting data back to a base station for recording and visualisation. 
 
 We had a set of requirement that the sensor should be battery powered, with long life. The sensor module should be capable of recording the current temperature, humidity and pressure as a minimum. As I'm still new to the microcontrollers, it should be based on an Arduino due to the amount of support available on the internet. 
 
