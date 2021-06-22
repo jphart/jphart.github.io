@@ -12,7 +12,7 @@ description: Using a Raspberry Pi and Arduino to track the weather
 <ul>
     <li><b>Introduction</b></li>
     <li><a href="sensor">Sensor hardware</a></li>
-    <li>Powering the sensor</li>
+    <li><a href="/weatherstation/power">Powering the sensor</a></li>
     <li>Final sensor hardware</li>
     <li>Sensor software</li>
     <li>Reciever hardware</li>
@@ -49,7 +49,7 @@ With these requirements in mind, a plan came together:
 
 ![Diagram showing the sensor, arduino and RaspberryPi as described below](/assets/images/weatherstation/weatherstation_overview.png)
 
-* Use an arduino nano with a BME 280 sensor to record pressure, humidity and temperature
+* Use an arduino nano with a sensor to record pressure, humidity and temperature
 * This would be powered by a battery & housed outside, either in the garage or garden shed
 * As WiFi doesn't reach outside the house, use a 433MHz radio module to transmit from the sensor to the Pi
 * Write some custom code to push the measurements into [InfluxDB](https://www.influxdata.com) a time seriese database made for logging values over time.
@@ -62,7 +62,7 @@ With a rough plan in place, it was time to start prototyping.
 Having never made anything like this before I had to do a lot of research and experimentation before coming up with a final design, so I'll be splitting up the build into a few parts.
 
 * [Sensor hardware prototype](sensor)
-* Powering the sensor
+* [Powering the sensor](power)
 * Final sensor hardware
 * Sensor software
 * Reciever hardware

@@ -11,7 +11,7 @@ description: Using a Raspberry Pi and Arduino to monitor the weather
 <ul>
     <li><a href="/weatherstation">Introduction</a></li>
     <li><b>Sensor hardware prototype</b></li>
-    <li>Powering the sensor</li>
+    <li><a href="/weatherstation/power">Powering the sensor</a></li>
     <li>Final sensor hardware</li>
     <li>Sensor software</li>
     <li>Reciever hardware</li>
@@ -275,7 +275,7 @@ Weather data won't be changing quickly, missing a single reading or two is unlik
 
 We've picked the hardware for the sensor, created a prototype and done some testing of the configuration of the transmitter. 
 
-Next time: How to power the sensor, minimising power usage and a change in plans.
+[Next time: How to power the sensor](/weatherstation/power), minimising power usage and a change in plans.
 
 
 <script src="/assets/js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
