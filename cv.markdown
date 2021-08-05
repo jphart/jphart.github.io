@@ -72,7 +72,17 @@ The source code is available at: [http://sourceforge.net/projects/stack/](http:/
 
 
 ### 2005 - 2007: Web developer, Wickersley School
-I managed and designer of the [wickersley.net](http://www.wickersley.net) website, migrating it from a static website to a Drupal CMS. In addition I managed the college's intranet and a minor technical support role.
+I managed and designer of the [wickersley.net](http://www.wickersley.net) website, migrating it from a static website to a Drupal CMS. In addition I ran the college's intranet and performed a minor technical support role.
+
+## Certificates & Training
+
+* Currently working toward Kuberneties Certified Developer
+* 2021 AWS Cloud Practioner Certification
+* 2017 Understanding the Java Spring Framework Course By QA
+* 2017 Java SE8 Developer training (SL-PROG-SE8)
+* 2016 M101JS: MongoDB for Node.js Developers Certification
+* 2016 Cloudera Administrator Training Course
+
 
 ## Education
 
