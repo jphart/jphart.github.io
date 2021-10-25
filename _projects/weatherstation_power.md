@@ -30,7 +30,7 @@ I purchased the arduino nano clone before doing much research into how to power 
 
 My first test involved writing the simplest unoptimised program on the arduino to take sensor readings from the BME-280 sensor and transmit these values over the HC-12.
 
-I set it up in the office and kept an eye on the power bank levels, after around 5 days the battery was dead. This gives a rough current draw of ~46mAh. Not high for a device plugged into the wall, but it quickly drains a battery. Later testing of the nano hooked up to directly to a battery showed a much lower current draw when active, closer to 20mAh, so I suspect the are some inefficiencies in the power regulartor when in powering a nano from the USB & my battery bank is probably a bit lower than the 5000mAh it claims to be.
+I set it up in the office and kept an eye on the power bank levels, after around 5 days the battery was dead. This gives a rough current draw of ~46mAh. Not high for a device plugged into the wall, but it quickly drains a battery. Later testing of the nano hooked up to directly to a battery showed a much lower current draw when active, closer to 20mAh, so I suspect the are some inefficiencies in the power regulator when in powering a nano from the USB & my cheap battery bank is probably a bit lower than the 5000mAh it claims to be.
 
 
 ## Software optimisations
@@ -39,7 +39,7 @@ Being a software developer, I first looked at what software modifcations could b
 
 ### Powering down the BME-280
 
-We set the sensor is set to sleep by default. While sleeping the power usage is in the micro-amps range. 
+When running the BME-280 draws a few milliamps. Its a small power draw, but adds up over time. We can reduce this by setting the sensor to sleep by default, while sleeping the power usage is in the micro-amps range. 
 
 ```c
     bmeSensor.setMode(MODE_SLEEP);
@@ -55,6 +55,8 @@ When a reading is required, the sensor is woken up briefly & read, before being 
         bmeSensor.setMode(MODE_SLEEP);
     }
 ```
+
+
 
 ### Sleeping the HC-12
 
@@ -123,7 +125,7 @@ We won't be using the analog to digital converter at all, so this is powered dow
     }
 ```
 
-Between weather reading we can now power down the system rather than use a simple delay. This command goes into the lowest power state for 8 seconds, to sleep for longer we simply call this multiple times in a loop. Eg setting `define SLEEP_PERIOD 10` will sleep the arduino for 10 x 8 = 80 seconds. 
+Between weather reading we can now power down the system fully. This command goes into the lowest power state for 8 seconds, to sleep for longer we simply call this multiple times in a loop. Eg setting `define SLEEP_PERIOD 10` will sleep the arduino for 10 x 8 = 80 seconds. 
 
 ```c    
     for(int i =0; i < SLEEP_PERIOD; i++){
@@ -145,7 +147,7 @@ The following code will run the arduino at 8MHz.
     }
 ```
 
-However, running my Arduino at 8MHz produced garbled messages being sent by the HC-12. I suspected this was due to data being sent over the serial port to the HC-12 at half the rate it expected, so tried doubling the baud rate, but this didn't resolve the problem.
+However, running my Arduino at 8MHz produced garbled messages being sent by the HC-12. I suspected this was due to data being sent over the serial port to the HC-12 at half the rate it expected, so I tried doubling the baud rate, but this didn't resolve the problem.
 
 Halving the clock rate means that it would take twice as long to run the measurement code, this could offset or negate any potential power savings running at a lower clock rate. Sometimes its best to finish a task quicker and sleep the arduino sooner. 
 
@@ -153,7 +155,7 @@ The main benefit of running at a reduced clock rate is that you can run the ardu
 
 ### Lowering the input voltage
 
-For some cases lowering the input voltage down to 3.3v, with the clockspeed reduced gives significant power reductions. I couldn't go with this option, as I'll need a 5v power supply for the HC-12.
+For some cases lowering the input voltage down to 3.3v, with the clockspeed reduced gives significant power reductions. I couldn't go with this option, as I'll need a 5v power supply for the HC-12 & didn't want the complexity of managing two supply voltages. 
 
 
 ## Results
@@ -185,7 +187,7 @@ With the original plan out of the window, lets look at alternative methods for p
 
 * I need 5v for the HC-12, I can't power the Nano from 3.3v only
 * The batteries must last at least a month, ideally more than 3 months between changes
-* No specialty/new chargers, USB, AA battery chargers or even 12v Car batteries I can charge
+* No specialty/new chargers. I can charge with USB, AA battery chargers or even 12v Car batteries without buyingn new equipment. 
 
 A 7ma current draw whilst sleeping is pretty high, ideally the draw should 100 times lower for a simple sensor. Lets do a bit of maths to see how long we could run the weather station on normal AA batteries. 
 
@@ -208,7 +210,22 @@ Lead acid 7ah|12| |7000|84|41.6d\*|£16
 Based on a few different capacities and configurations the best we can do is a month, using 12 AA batteries. That's going to be a pain to manage & keep charged. 
 
 
-# Going solar powered
+# Plan C
+
+Powering the sensor using AA batteries with the current power draw was out of the window.  
+
+Others had made this setup work, but it turns out that a arduino nano isn't optimised for battery power operation. 
+
+Reading around the subject, a couple of options came up
+
+1. Use an external circuit to trigger powering up the arduino to take a measurement. The arduino takes and transmits a measurement the fully powers off. 
+2. Rather than use a full arduino devwlopment board with its extra power losses, use a raw Atmel microcontroller & add the minimal supporting hardware.
+
+In the end I decide to go a third way, which I hoped would mean I never had to charge a battery.
+
+## Going solar  
+
+
 
 Charger board, boost converter, solar panel
 
