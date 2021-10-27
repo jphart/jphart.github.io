@@ -10,8 +10,8 @@ description: Using a Raspberry Pi and Arduino to monitor the weather using a sol
 <p>Posts in this series</p>
 <ul>
     <li><a href="/weatherstation">Introduction</a></li>
-    <li><b>Sensor hardware prototype</b></li>
-    <li><a href="/weatherstation/power">Powering the sensor</a></li>
+    <li><a href="/weatherstation/sensor">Sensor hardware prototype</a></li>
+    <li><b>Powering the sensor</b></li>
     <li>Final sensor hardware</li>
     <li>Sensor software</li>
     <li>Reciever hardware</li>
