@@ -155,7 +155,7 @@ The main benefit of running at a reduced clock rate is that you can run the ardu
 
 ### Lowering the input voltage
 
-For some cases lowering the input voltage down to 3.3v, with the clockspeed reduced gives significant power reductions. I couldn't go with this option, as I'll need a 5v power supply for the HC-12 & didn't want the complexity of managing two supply voltages. 
+For some cases [lowering the input voltage down to 3.3v](https://diyi0t.com/arduino-reduce-power-consumption/), with the clockspeed reduced gives significant power reductions. I couldn't go with this option, as I'll need a 5v power supply for the HC-12 & didn't want the complexity of managing two supply voltages. 
 
 
 ## Results
@@ -209,28 +209,50 @@ Lead acid 7ah|12| |7000|84|41.6d\*|£16
 
 Based on a few different capacities and configurations the best we can do is a month, using 12 AA batteries. That's going to be a pain to manage & keep charged. 
 
+## Hardware modifications
 
-# Plan C
+Optimising the software to use the power saving features of the hardware has got us down from a power draw of 18.5ma down to 7ma, better, but still pretty high for a continuous drain on battery power. It was time to look at hardware options. 
 
-Powering the sensor using AA batteries with the current power draw was out of the window.  
+### Removing the power LED
 
-Others had made this setup work, but it turns out that a arduino nano isn't optimised for battery power operation. 
+Arduinos have a LED to indicate when the device is powered up, which can't be disabled in software. I cracked out the soldering iron and carefully heated up the small surface mounted resistor in front of the LED & gently slid it off its pads. Running the power draw tests again showed reduction in power draw of 2ma, giving a 5ma draw on idle, definetly worth doing.
 
-Reading around the subject, a couple of options came up
+[Others have](http://swdesigns.me/low-power/) gone to more [extreme lengths](https://andreasrohner.at/posts/Electronics/How-to-modify-an-Arduino-Pro-Mini-clone-for-low-power-consumption/) to reduce the power draw on their projects, but for the Nano clone I have this seemed to be about as its worth doing.
+
+Unlike the Arduino Pro, the Nano has a built in USB to serial interface chip to allow it to be easily programmed, which draws a few milliamps. This chip can be removed, but then I'd have no way to reprogram the arduino, this was not a step I'd want to take. 
+
+### Results
+The power draw has been reduced, but it's looking like the sensor using AA batteries is out of the window.  
+
+Others had made this setup work, but it turns out that a arduino nano isn't optimised for battery power operation. Reading around the subject, a couple of options came up:
 
 1. Use an external circuit to trigger powering up the arduino to take a measurement. The arduino takes and transmits a measurement the fully powers off. 
-2. Rather than use a full arduino devwlopment board with its extra power losses, use a raw Atmel microcontroller & add the minimal supporting hardware.
+2. Rather than use a full arduino development board with its extra power losses, [use a raw Atmega328 microcontroller](http://www.gammon.com.au/power) & add the minimal supporting hardware.
 
 In the end I decide to go a third way, which I hoped would mean I never had to charge a battery.
 
 ## Going solar  
 
+Rather than ditch the Arduino Nano & have to start again with the hardware, I decided to look into solar as a power source. With a battery being topped up each day by a solar cell I wouldn't have to worry about power draw as much & more importantly I'd never have to change a battery. For this simple usecase its probably overkill, but it also gave me the chance to learn a little about [solar power](https://www.youtube.com/watch?v=wvsP_lzh2-8). 
 
+[This video](https://www.youtube.com/watch?v=WdP4nVQX-j0) give a good breakdown of what to think about when powering devices from solar. At a 5ma power draw at idle, I need 120mah to power the sensor for the day, additing in [20% for charging efficiency](https://en.wikipedia.org/wiki/Lithium-ion_battery) means I need 144mah per day for the sensor. A 1 watt panel would supply this in a single hour, so even in the darkest days of winter I'd expect the battery to be topped back up.
 
-Charger board, boost converter, solar panel
+To effectively charge a battery from solar a special charger board is required that can handle the changing input current as the sunlight varies. I went with [this charger](https://shop.pimoroni.com/products/adafruit-universal-usb-dc-solar-lithium-ion-polymer-charger-bq24074) from Adafruit. When the sun is out it will power the board and charge a LiPo battery. At night it will power the board from the battery. It requires input from a 6V panel and as plus has a USB C port that can also be used to charge the battery. It outputs a steady 4.4v, too low for the arduino, so I added [this boost converter](https://shop.pimoroni.com/products/adafruit-miniboost-5v-1a-tps61023) to increase the voltage to 5v.  
 
+Lithium batteries [can be dangerous](https://www.bbc.co.uk/news/business-38714461) so rather than going for a cheap battery from Amazon/Ebay I went with [this 2200mah battery](https://shop.pimoroni.com/products/lithium-ion-battery-pack?variant=23417820359) from Pimoroni. It has protection circutry to stop it being over charged, or over discharged.  
 
+For the solar panel I when with [this cheap](https://www.ebay.co.uk/itm/224488184479?mkevt=1&mkcid=1&mkrid=710-53481-19255-0&campid=5338766898&toolid=10029&customid=Cj0KCQjw8eOLBhC1ARIsAOzx5cHlwCdbQv8AUCC07AFXXBtR6vgavw-iTKM6_0zgiMSy-MAp6DDlxroaAp_vEALw_wcB&_trkparms=ispr%3D1&amdata=enc%3A1AwTK5FWGSIqknhGIL_ZIOg12&gclid=Cj0KCQjw8eOLBhC1ARIsAOzx5cHlwCdbQv8AUCC07AFXXBtR6vgavw-iTKM6_0zgiMSy-MAp6DDlxroaAp_vEALw_wcB) 6V 1 watt panel off ebay. 
 
+I hooked these up on a breadboard and over the next few days verified the charging / discharging worked correctly.
+![Arduino hooked up to a solar charger and battery](/assets/images/weatherstation/solar.jpg)
+
+This give me this final circuit design for the sensor.
+
+![Final circuit design for the weather sensor](/assets/images/weatherstation/weather_sensor.png)
+
+# Conclusion
+
+After a lot of experimentation we have a final choice of power for the sensor & a functional design on the breadboard. In the next section we'll make a finish off with a case and proper circuit board the sensor.
 
 <script src="/assets/js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
