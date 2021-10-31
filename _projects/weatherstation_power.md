@@ -246,6 +246,8 @@ For the solar panel I when with [this cheap](https://www.ebay.co.uk/itm/22448818
 I hooked these up on a breadboard and over the next few days verified the charging / discharging worked correctly.
 ![Arduino hooked up to a solar charger and battery](/assets/images/weatherstation/solar.jpg)
 
+I added a wire from the Charge pin on the LiPo charger board to the arduino, this way I could report if the battery was being charged or discharged. 
+
 This give me this final circuit design for the sensor.
 
 ![Final circuit design for the weather sensor](/assets/images/weatherstation/weather_sensor.png)
