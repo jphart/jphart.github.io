@@ -12,10 +12,10 @@ description: Using a Raspberry Pi and Arduino to monitor the weather using a sol
     <li><a href="/weatherstation">Introduction</a></li>
     <li><a href="/weatherstation/sensor">Sensor hardware prototype</a></li>
     <li><b>Powering the sensor</b></li>
-    <li>Final sensor hardware</li>
+    <li><a href="/weatherstation/final_hardware">Final sensor hardware</a></li>
     <li>Sensor software</li>
-    <li>Reciever hardware</li>
-    <li>Reciever software</li>
+    <li>Receiver hardware</li>
+    <li>Receiver software</li>
     <li>Final build & installation</li>
 </ul>
 </div>
@@ -239,7 +239,7 @@ Rather than ditch the Arduino Nano & have to start again with the hardware, I de
 
 To effectively charge a battery from solar a special charger board is required that can handle the changing input current as the sunlight varies. I went with [this charger](https://shop.pimoroni.com/products/adafruit-universal-usb-dc-solar-lithium-ion-polymer-charger-bq24074) from Adafruit. When the sun is out it will power the board and charge a LiPo battery. At night it will power the board from the battery. It requires input from a 6V panel and as plus has a USB C port that can also be used to charge the battery. It outputs a steady 4.4v, too low for the arduino, so I added [this boost converter](https://shop.pimoroni.com/products/adafruit-miniboost-5v-1a-tps61023) to increase the voltage to 5v.  
 
-Lithium batteries [can be dangerous](https://www.bbc.co.uk/news/business-38714461) so rather than going for a cheap battery from Amazon/Ebay I went with [this 2200mah battery](https://shop.pimoroni.com/products/lithium-ion-battery-pack?variant=23417820359) from Pimoroni. It has protection circutry to stop it being over charged, or over discharged.  
+Lithium batteries [can be dangerous](https://www.bbc.co.uk/news/business-38714461) so rather than going for a cheap battery from Amazon/Ebay I went with [this 2200mah battery](https://shop.pimoroni.com/products/lithium-ion-battery-pack?variant=23417820359) from Pimoroni. It has protection circutry to stop it being over charged, or over discharged and short circuit protection, something you don't get using a raw [18650 cell](https://en.wikipedia.org/wiki/List_of_battery_sizes#Lithium-ion_batteries_(rechargeable)) common in laptops and electric cars. This battery is pretty overkill for this use, 2200mah should power the sensor for a couple of weeks without any input from the solar panel. A [smaller capacity LiPo](https://shop.pimoroni.com/products/lipo-battery-pack?variant=20429082055) would be an option, but the cost difference is minimal for the capacity & with the pouch style LiPo you need to be careful not to puncture the pouch, otherwise [fire](https://www.youtube.com/watch?v=wUFxlf4fXjo). The hard shell of the cell style battery appealed for this reason!  
 
 For the solar panel I when with [this cheap](https://www.ebay.co.uk/itm/224488184479?mkevt=1&mkcid=1&mkrid=710-53481-19255-0&campid=5338766898&toolid=10029&customid=Cj0KCQjw8eOLBhC1ARIsAOzx5cHlwCdbQv8AUCC07AFXXBtR6vgavw-iTKM6_0zgiMSy-MAp6DDlxroaAp_vEALw_wcB&_trkparms=ispr%3D1&amdata=enc%3A1AwTK5FWGSIqknhGIL_ZIOg12&gclid=Cj0KCQjw8eOLBhC1ARIsAOzx5cHlwCdbQv8AUCC07AFXXBtR6vgavw-iTKM6_0zgiMSy-MAp6DDlxroaAp_vEALw_wcB) 6V 1 watt panel off ebay. 
 
@@ -254,7 +254,7 @@ This give me this final circuit design for the sensor.
 
 # Conclusion
 
-After a lot of experimentation we have a final choice of power for the sensor & a functional design on the breadboard. In the next section we'll make a finish off with a case and proper circuit board the sensor.
+After a lot of experimentation we have a final choice of power for the sensor & a functional design on the breadboard. In the next section we'll make a finish off with <a href="/weatherstation/final_hardware">a case and proper circuit board</a> the sensor.
 
 <script src="/assets/js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>

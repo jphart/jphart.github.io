@@ -13,10 +13,10 @@ description: Using a Raspberry Pi and Arduino to track the weather
     <li><b>Introduction</b></li>
     <li><a href="sensor">Sensor hardware</a></li>
     <li><a href="/weatherstation/power">Powering the sensor</a></li>
-    <li>Final sensor hardware</li>
+    <li><a href="/weatherstation/final_hardware">Final sensor hardware</a></li>
     <li>Sensor software</li>
-    <li>Reciever hardware</li>
-    <li>Reciever software</li>
+    <li>Receiver hardware</li>
+    <li>Receiver software</li>
     <li>Final build & installation</li>
 </ul>
 </div>
@@ -65,8 +65,8 @@ Having never made anything like this before I had to do a lot of research and ex
 * [Powering the sensor](power)
 * Final sensor hardware
 * Sensor software
-* Reciever hardware
-* Reciever software
+* Receiver hardware
+* Receiver software
 * Final build & installation
 
 <a href="sensor">Next time: building a prototype sensor</a>, looking at radio transmitters and sensor modules.
