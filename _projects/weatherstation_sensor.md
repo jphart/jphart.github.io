@@ -12,10 +12,10 @@ description: Using a Raspberry Pi and Arduino to monitor the weather
     <li><a href="/weatherstation">Introduction</a></li>
     <li><b>Sensor hardware prototype</b></li>
     <li><a href="/weatherstation/power">Powering the sensor</a></li>
-    <li>Final sensor hardware</li>
+    <li><a href="/weatherstation/final_hardware">Final sensor hardware</a></li>
     <li>Sensor software</li>
-    <li>Reciever hardware</li>
-    <li>Reciever software</li>
+    <li>Receiver hardware</li>
+    <li>Receiver software</li>
     <li>Final build & installation</li>
 </ul>
 </div>
@@ -57,7 +57,7 @@ Next up was a means of transmitting the sensor values back to the Pi. I wanted t
 
 Instead I started looking at 433MHz modules. There are plenty of cheap RF modules available, but I was concerned about the range and reliability transmitting data on these modules. I didn't want to have to write tonnes of error correction code!
 
-Looking for alternatives I chose to use the widely available [HC-12](http://www.hc-01.com). The HC-12 relatively cheap (~£6 per module) long range (up to 1KM) transmitter / receiver that works on the unlicenced 433MHz band. It provides a simple serial input and output, no software libraries are required. Unlike simpler cheap 433MHz transmitters each module can both send and receive, although it cannot both transmit and receive at the same time (known as simplex rather than duplex). While I was only intending each as either a transmitter or reciever, being able to use one type of module seemed like a positive. 
+Looking for alternatives I chose to use the widely available [HC-12](http://www.hc-01.com). The HC-12 relatively cheap (~£6 per module) long range (up to 1KM) transmitter / receiver that works on the unlicenced 433MHz band. It provides a simple serial input and output, no software libraries are required. Unlike simpler cheap 433MHz transmitters each module can both send and receive, although it cannot both transmit and receive at the same time (known as simplex rather than duplex). While I was only intending each as either a transmitter or Receiver, being able to use one type of module seemed like a positive. 
 
 I went with [this two pack](https://www.amazon.co.uk/Youmile-Wireless-Replace-Bluetooth-Antenna/dp/B07ZCRKX9Q/ref=asc_df_B07ZCRKX9Q/?tag=googshopuk-21&linkCode=df0&hvadid=394366095110&hvpos=&hvnetw=g&hvrand=5515870156220128326&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1006622&hvtargid=pla-843970373458&psc=1&tag=&ref=&adgrpid=87233666132&hvpone=&hvptwo=&hvadid=394366095110&hvpos=&hvnetw=g&hvrand=5515870156220128326&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1006622&hvtargid=pla-843970373458).
 
@@ -67,7 +67,7 @@ Be careful of low quality clones, these may have limited range. [This video from
 
 The transmitter module has a number of settings from the wireless channel to transmit/recieve on, to the amount of power & the baud rate at which to transmit at. 
 
-We will need to configure the HC-12 modules transmission and recieve settings. The HC-12 stores its settings on a onboard memory, so this only needs to be done once. Both the sender and reciever module need to be configured identically. To configure the module, the set pin is pulled HIGH and AT style commands are sent over the serial interface. 
+We will need to configure the HC-12 modules transmission and recieve settings. The HC-12 stores its settings on a onboard memory, so this only needs to be done once. Both the sender and Receiver module need to be configured identically. To configure the module, the set pin is pulled HIGH and AT style commands are sent over the serial interface. 
 
 The [HC-12 datasheet](https://opencircuit.shop/resources/file/0f8d974f31fd813604c4d3fb0e9004ec3b483706466/HC-12-Datasheet.pdf) gives full details on the settings avaliable. 
 
@@ -257,7 +257,7 @@ To get the most reliable signal (I would get the odd partial / corrupt message) 
 
 ### Acknowledge the message 
 
-I mentioned that I wanted as reliable as possible connection between the sender and receiver earlier, so why don't I get the reciever to [acknowledge](https://en.wikipedia.org/wiki/Acknowledgement_(data_networks)) the weather reading message & the sender to retry? You could even increase the transmission power if the message is not received before trying again & skip the range experiments above... 
+I mentioned that I wanted as reliable as possible connection between the sender and receiver earlier, so why don't I get the Receiver to [acknowledge](https://en.wikipedia.org/wiki/Acknowledgement_(data_networks)) the weather reading message & the sender to retry? You could even increase the transmission power if the message is not received before trying again & skip the range experiments above... 
 
 There's two reasons why I didn't go down this rabbit hole:
 1. Simplicity
