@@ -24,10 +24,10 @@ description: Using a Raspberry Pi and Arduino to monitor the weather
 
 The software was developed with power consumption as the main consideration. I wanted minimal power draw when the system was idle - the vast majority of the time, which mean powering down the radio & sensor when not in use and putting the arduino to sleep.
 
-Here’s the code, we’ll step the interesting bits.
+Here’s the code, we’ll step into the interesting bits.
 
-'''c
 
+```c
 
 /*
   Put the BME280 into low power mode (aka Forced Read)
@@ -216,7 +216,7 @@ void loop()
   }
     
 }
-'''
+```
 
 The setup function sets up the software serial port for communicating with the HC-12 radio & connectivity to the BME-280 sensor over I2C. A software serial port is used to allow the built in, hardware serial port to be used for debugging messages. The Analog to Digital converter (ADC) isn’t used, so is disabled to save a little power.
 
