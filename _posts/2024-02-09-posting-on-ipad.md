@@ -3,8 +3,9 @@ layout: post
 title:  "Posting on iPad"
 date:   2024-02-09 12:00:00 +0000
 categories: 
+    - project
     - editing
-	 - git
+    - git
     - iPad
 ---
 
