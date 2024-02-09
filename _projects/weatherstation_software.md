@@ -26,7 +26,7 @@ The software was developed with power consumption as the main consideration. I w
 
 Here’s the code, we’ll step the interesting bits.
 
-<pre id="sensor_code">
+'''c
 
 
 /*
@@ -216,8 +216,7 @@ void loop()
   }
     
 }
-</pre>
-
+'''
 
 The setup function sets up the software serial port for communicating with the HC-12 radio & connectivity to the BME-280 sensor over I2C. A software serial port is used to allow the built in, hardware serial port to be used for debugging messages. The Analog to Digital converter (ADC) isn’t used, so is disabled to save a little power.
 
@@ -240,14 +239,3 @@ For simple diagnostics the led is flashed for various error states:
 
 ## Next time
 Next time we'll move over to the receiver side.
-
-<script src="/assets/js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var recieve_editor = ace.edit("sensor_code");
-    recieve_editor.setTheme("ace/theme/solarized_dark");
-    recieve_editor.session.setMode("ace/mode/c_cpp");
-    recieve_editor.setOptions({
-        maxLines: 150,
-        minLines: 5
-    });
-</script>
