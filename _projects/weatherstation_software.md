@@ -20,14 +20,13 @@ description: Using a Raspberry Pi and Arduino to monitor the weather
 </ul>
 </div>
 
-h1. Sensor software
+# Sensor software
 
 The software was developed with power consumption as the main consideration. I wanted minimal power draw when the system was idle - the vast majority of the time, which mean powering down the radio & sensor when not in use and putting the arduino to sleep.
 
 Here’s the code, we’ll step the interesting bits.
 
 <pre id="sensor_code">
-
 
 
 /*
@@ -219,6 +218,7 @@ void loop()
 }
 </pre>
 
+
 The setup function sets up the software serial port for communicating with the HC-12 radio & connectivity to the BME-280 sensor over I2C. A software serial port is used to allow the built in, hardware serial port to be used for debugging messages. The Analog to Digital converter (ADC) isn’t used, so is disabled to save a little power.
 
 
@@ -238,7 +238,7 @@ For simple diagnostics the led is flashed for various error states:
  *  5 Flashes - HC-12 error, could not wake up
 
 
-h2. Next time
+## Next time
 Next time we'll move over to the receiver side.
 
 <script src="/assets/js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
