@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Flask LDAP login issues"
-date:   2024-03-29 12:00:00 +0000
+date:   2024-06-29 12:00:00 +0000
 categories: 
     - flask
     - python
